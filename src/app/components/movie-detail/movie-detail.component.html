@@ -1,0 +1,79 @@
+<div class="container">
+    <!--title-->
+    <h1 class="my-4">{{movieDetails.title}}
+        <small>{{movieDetails.tagline}}</small>
+    </h1>
+    <!--status -->
+    <div class="row">
+
+        <div class="col-md-8">
+            <img class="img-fulid" src={{posterImgUrl}} alt="" style="height: 600px;width: 640px;padding-left:25px ;">
+        </div>
+
+        <div class="col-md-4">
+            <div class="my-3"><span type="button" *ngIf="showLike" class="btn btn-primary" (click)="addToFavorites()"><i class="fa fa-thumbs-up" aria-hidden="true"></i>Like</span></div>
+            <div class="my-3"><span type="button" *ngIf="!showLike"  class="btn btn-danger" (click)="removefromFavorites()"><i class="fa fa-thumbs-up" aria-hidden="true"></i>DisLike</span></div>
+            <h3 class="my-3" style="padding-right:10px ;">Movie overview:</h3>
+            <h6>{{movieDetails.overview}}</h6>
+
+            <h3 class="my-3">Movie Details:</h3>
+            <ul>
+                <table class="table table-bordered table-sm">
+                    <tbody>
+                        <tr>
+                            <td>Status:</td>
+                            <td>{{ movieDetails.status}}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Release Date: </td>
+                            <td>{{ movieDetails.release_date}}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Original Language:</td>
+                            <td>{{ movieDetails.original_language}}</td>
+                        </tr>
+
+                        <tr>
+                            <td>Votingrange:</td>
+                            <td>{{ movieDetails.vote_average}}</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>votecount:</td>
+                            <td>{{ movieDetails.vote_count}}</td>
+                        </tr>
+                        <tr>
+                            <td>Popularity:</td>
+                            <td>{{ movieDetails.popularity}}</td>
+                        </tr>
+                        <tr>
+                            <td>MovieRuntime:</td>
+                            <td>{{ movieDetails.runtime}}</td>
+                        </tr>
+                        <tr>
+                            <td>HomePage:</td>
+                            <td>{{ movieDetails.homepage}}</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </ul>
+        </div>
+
+    </div>
+
+<!--related movies-->
+<h3 class="my-4">Related Movies:</h3>  
+
+<app-related [movieId]="movieDetails.id"></app-related>
+
+</div>
+<ul>
+  <button class="btn btn-success" style="margin-left:750px; margin-top: 10px;"(click)="onClick()">CastDetails</button>
+</ul>
+
+<div id="actor-div" class="row">
+    <app-actor-card *ngFor="let cast of castDetails" [cast]="cast"> </app-actor-card>
+</div>

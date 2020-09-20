@@ -1,0 +1,8 @@
+<app-showcase [imgSrc]="showcaseImgUrl"></app-showcase>
+
+<div class="row" style="margin: 10px;">
+    <app-movie-card *ngFor="let movieDetails of movieData" [movie]="movieDetails"></app-movie-card>
+</div>
+<ul>
+<button class="btn btn-sucess" style="margin-left: 700px; background-color:rgb(15, 218, 123); "(click)="getMovies()">Load Movies</button>
+</ul>
